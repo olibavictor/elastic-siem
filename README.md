@@ -36,4 +36,15 @@
 
 - ./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
 - ./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
-- ./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password#>
+- ./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+
+# Gerar certificados
+
+- /usr/share/elasticsearch/bin/elasticsearch-certutil ca
+- /usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca elastic-CA.p12
+- /usr/share/elasticsearch/bin/elasticsearch-certutil http
+
+# Testar funcionamento do cluster elasticsearch
+
+- curl -k -u elastic https://localhost:9200/_cat/nodes?v
+
