@@ -31,3 +31,9 @@
       - xpack.reporting.encryptionKey
       - xpack.security.encryptionKey
    - Colocar HAProxy na frente das intancias do kibana para balancear a carga
+  
+# Configuração de kesytore 
+
+./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
+./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
