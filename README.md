@@ -1,3 +1,3 @@
-# Elastic SIEM
+# Instalação e configuração de cluster Elastic SIEM 8.1
 
-Arquivos de configuração para implementação do cluster Elastic SIEM
+
