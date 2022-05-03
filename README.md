@@ -2,8 +2,8 @@
 
 - Configuração de disco (Particionamento e LVM config)
   - Raiz  "/" 100GB
-    Dados "/var/lib/elasticsearch" 800GB
-    Logs  "/var/log/elasticsearch" 100GB
+  - Dados "/var/lib/elasticsearch" 800GB
+  - Logs  "/var/log/elasticsearch" 100GB
     
 
 # Instalação e configuração de cluster Elastic SIEM 8.1
