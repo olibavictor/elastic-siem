@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: siem_iurd
+cluster.name: siem_cluster
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -67,7 +67,7 @@ http.port: 9200
 # Pass an initial list of hosts to perform discovery when this node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.seed_hosts: ["172.25.1.12", "172.25.1.13", "172.25.1.14"]
+discovery.seed_hosts: ["ip-node1", "ip-node2", "ip-node3"]
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
