@@ -127,3 +127,22 @@
 ``
 curl -k -u elastic https://localhost:9200/_cat/nodes?v
 ``
+
+### Migrar kibana para a porta 443
+
+>Primeiro precisamos alterar a porta no arquivo de configuração "kibana.yml"
+>
+>Depois disso precisamos dar permissão de todos os executaveis do kibana para as portas privilegiadas "< 1024"
+
+``
+sudo setcap cap_net_bind_service=+epi /usr/share/kibana/bin/kibana
+``
+``
+sudo setcap cap_net_bind_service=+epi /usr/share/kibana/bin/kibana-plugin
+``
+``
+sudo setcap cap_net_bind_service=+epi /usr/share/kibana/bin/kibana-keystore
+``
+``
+sudo setcap cap_net_bind_service=+epi /usr/share/kibana/node/bin/node
+``
