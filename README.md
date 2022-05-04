@@ -1,4 +1,4 @@
-## Configuração de discos
+## Elastic SIEM Configuration 8.1/8.2
 
 ### Configuração de disco Elasticsearch (Particionamento e LVM config)
 
