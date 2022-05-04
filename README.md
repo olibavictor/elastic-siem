@@ -19,7 +19,7 @@
     
 ### Configuração do cluster Elasticsearch
 
-**Alterações no arquivo de configuração em todos os nós**
+***Alterações no arquivo de configuração em todos os nós***
 
 >cluster.name
 >
@@ -39,7 +39,7 @@
 
 ### Configuração do cluster Kibana
 
-**Alterações no arquivos de configuração em todas as intancias:**
+***Alterações no arquivos de configuração em todas as instâncias***
 
 >server.port (default)
 >
@@ -63,10 +63,10 @@
 >
 >xpack.security.encryptionKey
 
->**Colocar HAProxy na frente das intancias do kibana para balancear a carga**
+>***Colocar HAProxy na frente das intancias do kibana para balancear a carga***
   
 ### Gerar certificados Elasticsearch
->**Use /bin/elasticsearch-certutil para gerar os certificados**
+>***Use /bin/elasticsearch-certutil para gerar os certificados***
 
 >Gerar nova CA
 ``
@@ -85,7 +85,7 @@
 >Caso os certificados configuados tenham senha, é preciso configurar o keystore do elasticsearch para que ele consiga acessar os certificados
 
 ### Gerar certificados Kibana
->**Use /bin/elasticsearch-certutil para gerar os certificados**
+>***Use /bin/elasticsearch-certutil para gerar os certificados***
 
 >Gerar certificado para acesso da aplicação via browser HTTPS
 ``
