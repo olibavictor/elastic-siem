@@ -1,17 +1,21 @@
-# Configuração Inicial
+## Configuração de discos e particionamento
 
-- Configuração de disco elasticsearch (Particionamento e LVM config)
-  - Raiz  "/" 100GB
-  - Dados "/var/lib/elasticsearch" 800GB
-  - Logs  "/var/log/elasticsearch" 100GB
- 
-- Configuração de disco kibana (Particionamento e LVM config)
-  - Raiz  "/" 100GB
-  - Dados "/var/lib/kibana" 100GB
-  - Logs  "/var/log/kibana" 100GB
+### Configuração de disco elasticsearch (Particionamento e LVM config)
+```
+root  "/" 100GB
+data  "/var/lib/elasticsearch" 800GB
+log   "/var/log/elasticsearch" 100GB
+```
+
+### Configuração de disco kibana (Particionamento e LVM config)
+```
+root  "/" 100GB
+data  "/var/lib/kibana" 100GB
+log   "/var/log/kibana" 100GB
+```
     
 
-# Instalação e configuração de cluster Elastic SIEM 8.1
+## Configuração do cluster elasticsearch
 
 - Instalação Elastic Stack (elasticsearch/kibana/logstash)
 - Configuração do cluster elasticsearch
