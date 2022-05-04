@@ -69,17 +69,23 @@
 >***Use /bin/elasticsearch-certutil para gerar os certificados***
 
 >Gerar nova CA
+
 ``
 ./usr/share/elasticsearch/bin/elasticsearch-certutil ca
 ``
+
 >Gerar certiicado para comunicação entre nós do cluster 
+
 ``
 ./usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca elastic-CA.p12
 ``
+
 >Gerar certificado http para API elasticsearch e ca.pem para que o kibana consiga se comunicar com o cluster via https
+
 ``
 ./usr/share/elasticsearch/bin/elasticsearch-certutil http
 ``
+
 >Configurar novos certificados no arquivos de configuração elasticsearch.yml
 >
 >Caso os certificados configuados tenham senha, é preciso configurar o keystore do elasticsearch para que ele consiga acessar os certificados
