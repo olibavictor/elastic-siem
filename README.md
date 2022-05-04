@@ -108,9 +108,11 @@
 ``
 ./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
 ``
+>
 ``
 ./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
 ``
+>
 ``
 ./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
 ``
@@ -119,6 +121,7 @@
 ``
 ./kibana-keystore add elasticsearch.username
 ``
+>
 ``
 ./kibana-keystore add elasticsearch.password
 ``
