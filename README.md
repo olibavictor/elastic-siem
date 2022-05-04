@@ -94,14 +94,17 @@
 >***Use /bin/elasticsearch-certutil para gerar os certificados***
 
 >Gerar certificado para acesso da aplicação via browser HTTPS
+
 ``
 ./usr/share/elasticsearch/bin/elasticsearch-certutil ca --pem 
 ``
+
 >Configurar novos certificados no arquivos de configuração kibana.yml
 >
 >Caso os certificados configuados tenham senha, é preciso configurar o keystore do elasticsearch para que ele consiga acessar os certificados
 
 ### Configuração de keystore Elasticsearch
+
 ``
 ./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
 ./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
