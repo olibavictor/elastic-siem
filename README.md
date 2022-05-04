@@ -3,9 +3,9 @@
 ### Configuração de disco elasticsearch (Particionamento e LVM config)
 
 >root  "/" 100GB 
-
+>
 >data  "/var/lib/elasticsearch" 800GB
-
+>
 >log   "/var/log/elasticsearch" 100GB
 
 
