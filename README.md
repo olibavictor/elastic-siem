@@ -1,4 +1,4 @@
-## Configuração de discos e particionamento
+## Configuração de discos
 
 ### Configuração de disco elasticsearch (Particionamento e LVM config)
 ```
@@ -14,20 +14,18 @@ data  "/var/lib/kibana" 100GB
 log   "/var/log/kibana" 100GB
 ```
     
+### Configuração do cluster elasticsearch
 
-## Configuração do cluster elasticsearch
-
-- Instalação Elastic Stack (elasticsearch/kibana/logstash)
-- Configuração do cluster elasticsearch
-  - Alteração no arquivo de configuração em todos os nós:
-      -  cluster.name
-      -  node.name
-      -  path.data (default)
-      -  path.logs (default)
-      -  network.host
-      -  http.port
-      -  discovery.seed_hosts
-      -  cluster.initial_master_nodes
+**Alteração no arquivo de configuração em todos os nós**
+ ```cluster.name
+ node.name
+ path.data (default)
+ path.logs (default)
+ network.host
+ http.port
+ discovery.seed_hosts
+ cluster.initial_master_nodes```
+ 
    - Gerar certificados para implementação
       -  Gerar nova CA
       -  Gerar certiicado para comunicação entre nós do cluster
