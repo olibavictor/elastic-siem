@@ -40,17 +40,26 @@
       - xpack.security.encryptionKey
    - Colocar HAProxy na frente das intancias do kibana para balancear a carga
   
-# Configuração de kesytore 
+# Configuração de kesytore Elasticsearch
 
 - ./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
 - ./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
 - ./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
 
-# Gerar certificados
+# Configuração de keystore Kibana
+
+- ./kibana-keystore add elasticsearch.username
+- ./kibana-keystore add elasticsearch.password
+
+# Gerar certificados Elasticsearch
 
 - /usr/share/elasticsearch/bin/elasticsearch-certutil ca
 - /usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca elastic-CA.p12
-- /usr/share/elasticsearch/bin/elasticsearch-certutil http
+- /usr/share/elasticsearch/bin/elasticsearch-certutil http (mover "ca.pem" para o kibana reconhecer a comunicação com todo os nós elastic)
+
+# Gerar certificados Kibana
+
+- ./elasticsearch-certutil ca --pem (Configurar crt e key no kibana.yml)
 
 # Testar funcionamento do cluster elasticsearch
 
