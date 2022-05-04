@@ -1,6 +1,6 @@
 ## Configuração de discos
 
-### Configuração de disco elasticsearch (Particionamento e LVM config)
+### Configuração de disco Elasticsearch (Particionamento e LVM config)
 
 >root  "/" 100GB 
 >
@@ -9,7 +9,7 @@
 >log   "/var/log/elasticsearch" 100GB
 
 
-### Configuração de disco kibana (Particionamento e LVM config)
+### Configuração de disco Kibana (Particionamento e LVM config)
 
 >root  "/" 100GB
 >
@@ -17,7 +17,7 @@
 >
 >log   "/var/log/kibana" 100GB
     
-### Configuração do cluster elasticsearch
+### Configuração do cluster Elasticsearch
 
 **Alterações no arquivo de configuração em todos os nós**
 
@@ -37,7 +37,7 @@
 >
 >cluster.initial_master_nodes
 
-### Configuração do cluster kibana
+### Configuração do cluster Kibana
 
 **Alterações no arquivos de configuração em todas as intancias:**
 
@@ -65,35 +65,50 @@
 
 >**Colocar HAProxy na frente das intancias do kibana para balancear a carga**
   
-# Configuração de kesytore Elasticsearch
+### Gerar certificados Elasticsearch
+>**Use /bin/elasticsearch-certutil para gerar os certificados**
 
-- ./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
-- ./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
-- ./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+>Gerar nova CA
+``
+./usr/share/elasticsearch/bin/elasticsearch-certutil ca
+``
+>Gerar certiicado para comunicação entre nós do cluster 
+``
+./usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca elastic-CA.p12
+``
+>Gerar certificado http para API elasticsearch e ca.pem para que o kibana consiga se comunicar com o cluster via https
+``
+./usr/share/elasticsearch/bin/elasticsearch-certutil http
+``
+>Configurar novos certificados no arquivos de configuração elasticsearch.yml
+>
+>Caso os certificados configuados tenham senha, é preciso configurar o keystore do elasticsearch para que ele consiga acessar os certificados
 
-# Configuração de keystore Kibana
+### Gerar certificados Kibana
+>**Use /bin/elasticsearch-certutil para gerar os certificados**
 
-- ./kibana-keystore add elasticsearch.username
-- ./kibana-keystore add elasticsearch.password
+>Gerar certificado para acesso da aplicação via browser HTTPS
+``
+./usr/share/elasticsearch/bin/elasticsearch-certutil ca --pem 
+``
+>Configurar novos certificados no arquivos de configuração kibana.yml
+>
+>Caso os certificados configuados tenham senha, é preciso configurar o keystore do elasticsearch para que ele consiga acessar os certificados
 
-# Gerar certificados Elasticsearch
+### Configuração de keystore Elasticsearch
+``
+./elasticsearch-keystore add xpack.security.http.ssl.keystore.secure_password
+./elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+./elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+``
 
--Gerar certificados para implementação
-      -  Gerar nova CA
-      -  Gerar certiicado para comunicação entre nós do cluster
-      -  Gerar certificado http para API elasticsearch e .pem para kibana conseguir fazer requisições https para elastic
-    - Configurar novos certificados no arquivos de configuração
-    - Caso os certificados configuados tenham senha, é preciso configurar o keystores do elasticsearch para que ele consiga acessar os certificados
+### Configuração de keystore Kibana
+``
+./kibana-keystore add elasticsearch.username
+./kibana-keystore add elasticsearch.password
+``
 
-- /usr/share/elasticsearch/bin/elasticsearch-certutil ca
-- /usr/share/elasticsearch/bin/elasticsearch-certutil cert --ca elastic-CA.p12
-- /usr/share/elasticsearch/bin/elasticsearch-certutil http (mover "ca.pem" para o kibana reconhecer a comunicação com todo os nós elastic)
-
-# Gerar certificados Kibana
-
-- ./elasticsearch-certutil ca --pem (Configurar crt e key no kibana.yml)
-
-# Testar funcionamento do cluster elasticsearch
-
-- curl -k -u elastic https://localhost:9200/_cat/nodes?v
-
+### Validar informações e saude dos nós do cluster Elasticsearch
+``
+curl -k -u elastic https://localhost:9200/_cat/nodes?v
+``
